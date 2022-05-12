@@ -2,7 +2,7 @@ var s = [{"Char Name": "Mario", "Char Id": "0x0", "Starting Addr": "0x8034e9a0",
 
 
 window.onload = function () {
-    var table = document.getElementById("stattable");
+    var stattable = document.getElementById("stattable");
     
     var t = "";
 
@@ -26,5 +26,29 @@ window.onload = function () {
         });
         t += "</tr>"
     });
-    table.innerHTML += t
+    stattable.innerHTML += t
+
+    chemtable = document.getElementById("chemtable")
+    t = ""
+    
+    t += "<tr>"
+    t += "<td></td>"
+    s.forEach(function(item){
+        t += "<td>" + item["Char Name"] + "</td>"
+    });
+    t += "</tr>"
+
+    s.forEach(function(item){
+        t += "<tr>"
+        t += "<td>"
+        t += item["Char Name"]
+        t += "</td>"
+        item.Chemistry.forEach(function(item2){
+            t += "<td>"
+            t += item2.Value
+            t += "</td>"
+        });
+        t += "</tr>"
+    });
+    chemtable.innerHTML += t;
 };
